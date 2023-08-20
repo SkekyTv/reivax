@@ -3,16 +3,12 @@
 # use master build from github until fix will be release from youtbe_dl
 import yt_dlp as youtube_dl
 import discord
-import asyncio
 import requests
+
 from discord.ext import commands
-from pprint import pprint
+
 # from youtube_dl import YoutubeDL
 YoutubeDL = youtube_dl.YoutubeDL
-
-ffmpeg_options = {
-    'options': '-vn'
-}
 
 class music_cog(commands.Cog):
     def __init__(self, bot):
@@ -94,7 +90,6 @@ class music_cog(commands.Cog):
             if type(song) == type(True):
                 await ctx.send("Could not download the song. Incorrect format try another keyword. This could be due to playlist or a livestream format.")
             else:
-                pprint(song)
                 await ctx.send(f"Song added to the queue: {song['title']} \n {song['yt_link']}")
                 self.music_queue.append([song, voice_channel])
 
