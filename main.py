@@ -26,7 +26,11 @@ bot = commands.Bot(command_prefix='$', description='basic bot', intents=intents)
 
 @bot.event
 async def on_ready():
-    await bot.add_cog(music_cog(bot))
+    await bot.add_cog(music_cog(
+        bot,
+        default_voice_channel=os.getenv("DEFAULT_VOICE_CHANNEL"),
+        default_server = os.getenv("DEFAULT_SERVER")
+    ))
     print(f'We have logged in as {bot.user}')
 
 # Start the bot
