@@ -12,7 +12,7 @@ YoutubeDL = youtube_dl.YoutubeDL
 
 
 class music_cog(commands.Cog):
-    def __init__(self, bot, default_voice_channel, default_server):
+    def __init__(self, bot, default_voice_channel, default_guild):
         self.bot = bot
 
         # all the music related stuff
@@ -21,7 +21,7 @@ class music_cog(commands.Cog):
 
         # id default voice join to join
         self.default_voice_channel = default_voice_channel
-        self.default_server = default_server
+        self.default_guild = default_guild
 
         # 2d array containing [song, channel]
         self.music_queue = []
@@ -113,7 +113,7 @@ class music_cog(commands.Cog):
 
         # Define the voice_channel
         if ctx.author.voice is None:
-            voice_channel = self.bot.get_guild(int(self.default_server)).get_channel(int(self.default_voice_channel))
+            voice_channel = self.bot.get_guild(int(self.default_guild)).get_channel(int(self.default_voice_channel))
         else:
             voice_channel = ctx.author.voice.channel
 
