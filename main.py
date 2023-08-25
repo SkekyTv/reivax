@@ -26,9 +26,10 @@ intents.members = True
 bot = commands.Bot(command_prefix="$", description="basic bot", intents=intents)
 
 
+default_guild = os.getenv("DEFAULT_GUILD")
+
 @bot.event
 async def on_ready():
-    default_guild = os.getenv("DEFAULT_GUILD")
     await bot.add_cog(
         music_cog(
             bot,
